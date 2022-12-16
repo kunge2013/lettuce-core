@@ -40,7 +40,11 @@ public class IntegerOutput<K, V> extends CommandOutput<K, V, Long> {
 
     @Override
     public void set(ByteBuffer bytes) {
-        output = null;
+        if (bytes == null) {
+            output = null;
+        } else {
+            output =  new Long(new String(bytes.array()))
+        }
     }
 
 }
